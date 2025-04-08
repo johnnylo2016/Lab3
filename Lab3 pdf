@@ -1,0 +1,52 @@
+# Import the necessary classes and methods
+from blockchain import BlockChain
+
+# Create an instance of the blockchain
+blockchain = BlockChain()
+
+# Step 1: Add transactions to the mempool
+try:
+    blockchain.new_transaction("Ray", "Joe", 200)  # Ray sends Joe $200
+    blockchain.new_transaction("Peter", "Bill", 400)  # Peter sends Bill $400
+except Exception as e:
+    print(f"Error adding transaction: {e}")
+
+# Step 2: Create a new block
+try:
+    blockchain.add_new_block()
+except Exception as e:
+    print(f"Error creating block: {e}")
+
+# Step 3: Add the next set of transactions to the mempool
+try:
+    blockchain.new_transaction("Ray", "Bill", 200)  # Ray sends Bill $200
+    blockchain.new_transaction("Peter", "Ray", 400)  # Peter sends Ray $400
+    blockchain.new_transaction("Chris", "Kris", 200)  # Chris sends Kris $200
+    blockchain.new_transaction("Peter", "Bill", 500)  # Peter sends Bill $500
+except Exception as e:
+    print(f"Error adding transaction: {e}")
+
+# Step 4: Create a new block
+try:
+    blockchain.add_new_block()
+except Exception as e:
+    print(f"Error creating block: {e}")
+
+# Step 5: Add the final set of transactions to the mempool
+try:
+    blockchain.new_transaction("Kris", "Ray", 1200)  # Kris sends Ray $1200
+    blockchain.new_transaction("Ray", "Chris", 400)  # Ray sends Chris $400
+except Exception as e:
+    print(f"Error adding transaction: {e}")
+
+# Step 6: Create a new block
+try:
+    blockchain.add_new_block()
+except Exception as e:
+    print(f"Error creating block: {e}")
+
+# Step 7: Print the blockchain
+try:
+    blockchain.print()
+except Exception as e:
+    print(f"Error printing blockchain: {e}")
